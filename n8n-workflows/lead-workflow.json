@@ -1,0 +1,72 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "newlead",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "aa02ebfc-1966-4629-b47e-cef3b81fe38e",
+      "name": "Webhook",
+      "webhookId": "6f1e2d74-7226-42e4-b838-7d2f380ad875"
+    },
+    {
+      "parameters": {
+        "fromEmail": "anjurushirisha@gmail.com",
+        "toEmail": "sirivennelasirivennel@gmail.com",
+        "subject": "=New Lead from {{$json.body.name}}",
+        "emailFormat": "both",
+        "text": "=New Lead Received\n\nName: {{$json.body.name}}\nEmail: {{$json.body.email}}\nCompany: {{$json.body.company}}\nMessage: {{$json.body.message}}\n",
+        "html": "=<h2>New Lead Received</h2>\n<p><strong>Name:</strong> {{$json.body.name}}</p>\n<p><strong>Email:</strong> {{$json.body.email}}</p>\n<p><strong>Company:</strong> {{$json.body.company}}</p>\n<p><strong>Message:</strong> {{$json.body.message}}</p>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "172fe7a9-9763-484a-821e-0cf5ff3410fd",
+      "name": "Send Email",
+      "webhookId": "31268540-58d7-4c95-8368-e66e88d1f2bf",
+      "credentials": {
+        "smtp": {
+          "id": "HP5lKV50sqGd0fsq",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6300bab2-5bee-4816-86cd-22297224dc19",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "95a18975f418c7d9f9076f47237240e3430204cd2c2a234aa6e9554504b1d343"
+  },
+  "id": "xVGwKuJyNoSCUuRq",
+  "tags": []
+}
